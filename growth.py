@@ -63,7 +63,7 @@ if uploaded_files:
         #Data visualization
         st.subheader("📊Data Visualization")
         if st.checkbox(f"Show visualization for {file.name}"):
-            st.bar_chart(df.select_dtypes(includes='number').iloc[:, :2])
+            st.bar_chart(df.select_dtypes(include='number').iloc[:, :2])
 
         #Conversion options
         st.subheader("🔄Conversion Options")
@@ -71,12 +71,12 @@ if uploaded_files:
         if st.button(f"Convert{file.name}"):
             buffer = BytesIO()
             if conversion_type == "CSV":
-                df.to.to_csv(buffer, index=False)
+                df.to_csv(buffer, index=False)
                 file_name = file.name.replace(file_ext, "CSV")
                 mime_type = "text/CSV"
 
             elif conversion_type == "Excel":
-                df.to.to_excel(buffer, index=False)
+                df.to_excel(buffer, index=False)
                 file_name = file.name.replace(file_ext, ".xlsx")
                 mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             buffer.seek(0)
